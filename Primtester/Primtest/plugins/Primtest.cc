@@ -117,10 +117,13 @@ Primtest::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup) {
 
   edm::Handle<HcalTrigPrimDigiCollection> hfpr_digi;
   iEvent.getByLabel("simHcalTriggerPrimitiveDigis", hfpr_digi);
-
+  cout<<"test 1"<<endl;
   edm::ESHandle<CaloTPGTranscoder> outTranscoder;
+  cout<<"test 2"<<endl;
   iSetup.get<CaloTPGRecord>().get(outTranscoder);
+  cout<<"test 3"<<endl;
   outTranscoder->setup(iSetup, CaloTPGTranscoder::HcalTPG);
+  cout<<"test 4"<<endl;
   for (HcalTrigPrimDigiCollection::const_iterator tp = hfpr_digi->begin(); tp != hfpr_digi->end(); ++tp) {
 double RealEt= outTranscoder->hcaletValue(tp->id(), (*tp)[1]);
 cout<<"Real Et? "<<RealEt<<endl;
